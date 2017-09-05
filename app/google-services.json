@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "618019297835",
+    "firebase_url": "https://appstatistics-2e73b.firebaseio.com",
+    "project_id": "appstatistics-2e73b",
+    "storage_bucket": "appstatistics-2e73b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618019297835:android:5d8ff035ddf620ed",
+        "android_client_info": {
+          "package_name": "com.nidhi.as"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618019297835-aa9mofpi6slqd6gir4kgrmfqfb1m79ao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQIdFy4irjNyVisgGRV9ImxKSxubpTc5w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
