@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     android:alwaysDrawnWithCache="false"
     android:scaleType="centerCrop"
-    tools:context="com.nidhi.demoproject.SplashActivity">
+    >
 
 
     <ImageView
@@ -18,7 +18,8 @@
         android:layout_marginTop="250dp"
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+         />
 
     <TextView
         android:id="@+id/textView_splash"
@@ -31,5 +32,5 @@
         android:textSize="40sp"
         android:textColor="@android:color/white"
         android:fontFamily="monospace"
-        android:text="Welcome" />
+        android:text="@string/welcome" />
 </RelativeLayout>

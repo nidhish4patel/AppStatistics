@@ -6,7 +6,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.view.KeyEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,14 +18,14 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.auth.FirebaseAuth;
 import com.nidhi.as.common.AppPreferences;
-import com.nidhi.as.fragments.QRCodeFragment;
+import com.nidhi.as.fragments.Notification;
+import com.nidhi.as.fragments.QRCode;
 import com.nidhi.as.fragments.Parent;
 import com.nidhi.as.utils.TraceUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -54,6 +53,14 @@ public class AppStaticsActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_statics);
+
+        fragStack = new Stack<>();
+
+        manager = getFragmentManager();
+
+        if (savedInstanceState != null) {
+            trans = manager.beginTransaction();
+        }
 
         tvResult = (TextView) findViewById(R.id.tv_result);
 
@@ -101,7 +108,7 @@ public class AppStaticsActivity extends AppCompatActivity
 
         TextView tv_name = (TextView) headerview.findViewById(R.id.tv_name);
         tv_name.setText(AppPreferences.getInstance(context).getStringFromStore("name"));
-//        tv_name.setText(AppPreferences.getInstance(context).getStringFromStore("guname"));
+//      tv_name.setText(AppPreferences.getInstance(context).getStringFromStore("guname"));
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -153,33 +160,20 @@ public class AppStaticsActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-
-
-            case R.id.nav_camera:
-                //load camera fragment.
-                //getSupportFragmentManager().beginTransaction().replace(R.id.container,new QRCodeFragment()).commit();
-                swiftFragments(QRCodeFragment.newInstance(), "home");
+            case R.id.nav_scanqrcode:
+                swiftFragments(QRCode.newInstance(), "home");
                 break;
-            case R.id.nav_gallery:
-                // getSupportFragmentManager().beginTransaction().replace(R.id.container, new GalleryFragment()).commit();
-                break;
-            case R.id.nav_slideshow:// inject Slide show fragment.
-                //getSupportFragmentManager().beginTransaction().replace(R.id.container, new SlideshowFragment()).commit();
-                break;
-            case R.id.nav_manage:
-                //getSupportFragmentManager().beginTransaction().replace(R.id.container, new ToolsFragment()).commit();
+            case R.id.nav_notifications:
+                swiftFragments(Notification.newInstance(), "notifications");
                 break;
             case R.id.nav_logout:
-
                 AppPreferences.getInstance(context).clearSharedPreferences();
                 LoginManager.getInstance().logOut();
-                if (mGoogleApiClient.isConnected())
-                    Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+                //if (mGoogleApiClient.isConnected())
+                // Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+                FirebaseAuth.getInstance().signOut();
                 AppStaticsActivity.this.finish();
                 break;
-
-
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F44336"
+    android:background="#757575"
     tools:context="com.nidhi.as.LoginActivity">
 
     <ImageView
@@ -82,6 +82,7 @@
             android:textSize="15sp"
             android:background="@drawable/backgroung_one"
             android:fontFamily="monospace"
+            android:textColor="@android:color/white"
             android:text="@string/signIn_button"
             style="?android:attr/buttonBarStyle"/>
 
@@ -92,6 +93,7 @@
             android:layout_weight="2"
             android:textSize="15sp"
             android:background="@drawable/backgroung_one"
+            android:textColor="@android:color/white"
             android:fontFamily="monospace"
             android:text="@string/register_button"
             style="?android:attr/buttonBarStyle"/>
@@ -113,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
-        android:visibility="gone"/>
+        />
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_facebook"

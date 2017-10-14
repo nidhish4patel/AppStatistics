@@ -17,7 +17,7 @@ import com.nidhi.as.R;
  * Created by nidhi on 5/17/2017.
  */
 
-public class QRCodeFragment extends Parent implements View.OnClickListener {
+public class QRCode extends Parent implements View.OnClickListener {
 
     private View view;
 
@@ -25,12 +25,12 @@ public class QRCodeFragment extends Parent implements View.OnClickListener {
 
     private AppStaticsActivity activity;
 
-    public QRCodeFragment() {
+    public QRCode() {
         //Constructor.
     }
 
-    public static QRCodeFragment newInstance() {
-        return new QRCodeFragment();
+    public static QRCode newInstance() {
+        return new QRCode();
     }
 
     @Override
@@ -84,7 +84,7 @@ public class QRCodeFragment extends Parent implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_scan:
-                IntentIntegrator.forFragment(QRCodeFragment.this).initiateScan();
+                IntentIntegrator.forFragment(QRCode.this).initiateScan();
                 break;
         }
     }
